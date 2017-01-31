@@ -1,0 +1,15 @@
+<resources>
+
+    <string name="app_name">IntentExample</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_intent_example">IntentExample</string>
+    <string name="no_camera_toast_message">Unable to take picture. No Camera Apps on this phone.</string>
+    <string name="taking_picture_toast_message">Taking a picture!</string>
+    <string name="take_a_picture_button_message">Take A Picture</string>
+    <string name="getNameInstructions">Get Name</string>
+    <string name="title_activity_get_name">GetName</string>
+    <string name="type_name_hint">Type Your Name!</string>
+    <string name="image_number_tag">image_number</string>
+
+</resources>

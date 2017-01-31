@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/gong"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:text="Gong"
+            android:textColor="#FF0"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/ava"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:text="Ava Maria"
+            android:textColor="#F00"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/fax"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:text="Fax Machine"
+            android:textColor="#F00"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/folk"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:text="Folk"
+            android:textColor="#0F0"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/rise"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:text="Rise"
+            android:textColor="#00F"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/rain"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:text="Rain"
+            android:textColor="#F0F"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/random"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:text="Play Random"
+            android:textColor="#0FF"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/stop"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="2dp"
+            android:hapticFeedbackEnabled="true"
+            android:text="STOP AUDIO"
+            android:textColor="#0FF"
+            android:textSize="18sp" />
+
+
+        <Button
+            android:id="@+id/playFromNetwork"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:onClick="playFromURL"
+            android:text="Play From Network"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

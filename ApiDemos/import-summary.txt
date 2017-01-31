@@ -1,0 +1,58 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* README.txt
+* tests\
+* tests\AndroidManifest.xml
+* tests\build.properties
+* tests\src\
+* tests\src\com\
+* tests\src\com\example\
+* tests\src\com\example\android\
+* tests\src\com\example\android\apis\
+* tests\src\com\example\android\apis\AllTests.java
+* tests\src\com\example\android\apis\ApiDemosApplicationTests.java
+* tests\src\com\example\android\apis\ApiDemosTest.java
+* tests\src\com\example\android\apis\app\
+* tests\src\com\example\android\apis\app\ForwardingTest.java
+* tests\src\com\example\android\apis\app\LocalServiceTest.java
+* tests\src\com\example\android\apis\os\
+* tests\src\com\example\android\apis\os\MorseCodeConverterTest.java
+* tests\src\com\example\android\apis\view\
+* tests\src\com\example\android\apis\view\Focus2ActivityTest.java
+* tests\src\com\example\android\apis\view\Focus2AndroidTest.java
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app\src\main\AndroidManifest.xml
+* assets\ => app\src\main\assets\
+* bin\res\ => app\src\androidTest\res\
+* res\ => app\src\main\res\
+* src\ => app\src\main\java\
+* src\com\example\android\apis\app\IRemoteService.aidl => app\src\main\aidl\com\example\android\apis\app\IRemoteService.aidl
+* src\com\example\android\apis\app\IRemoteServiceCallback.aidl => app\src\main\aidl\com\example\android\apis\app\IRemoteServiceCallback.aidl
+* src\com\example\android\apis\app\ISecondary.aidl => app\src\main\aidl\com\example\android\apis\app\ISecondary.aidl
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

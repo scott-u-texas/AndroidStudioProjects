@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GestureDemo</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="down">DOWN</string>
+    <string name="long_press">LONG PRESS</string>
+    <string name="show_press">SHOW PRESS</string>
+    <string name="scroll">SCROLL</string>
+    <string name="single_tap_up">SINGLE TAP UP</string>
+    <string name="double_tap">DOUBLE TAP</string>
+
+</resources>

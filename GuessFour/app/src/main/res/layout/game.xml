@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  	xmlns:android="http://schemas.android.com/apk/res/android"
+  	android:orientation="vertical"
+  	android:layout_width="fill_parent"
+  	android:layout_height="fill_parent"
+	android:background="@color/background">
+  	<LinearLayout
+  		android:orientation="horizontal"
+      	android:layout_width="fill_parent"
+      	android:layout_height="match_parent"
+      	android:layout_weight="1">
+		<scottm.examples.guessfour.BoardView 
+  			android:id="@+id/boardview"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:padding="5dp"
+			android:layout_weight="2"/>
+		<LinearLayout
+    		android:id="@+id/buttonContainer"
+		    android:orientation="vertical"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:layout_weight="5"
+		    android:paddingTop="32dp" />
+  	</LinearLayout>
+	<LinearLayout
+  		android:orientation="horizontal"
+      	android:layout_width="match_parent"
+      	android:layout_height="match_parent"
+      	android:layout_weight="5"
+      	android:layout_gravity="center"
+      	android:padding="5dip">
+		<Button
+			android:id="@+id/clear_peg_button"
+        	android:layout_height="fill_parent"
+        	android:layout_width="0dip"
+        	android:layout_weight="1"
+			android:text="@string/clear_peg"
+            android:onClick="clearPeg"
+			android:textSize="18sp" />
+		<Button
+			android:id="@+id/make_guess_button"
+	        android:layout_height="fill_parent"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+			android:text="@string/guess"
+            android:onClick="makeGuess"
+			android:textSize="18sp"  />
+		<Button
+			android:id="@+id/new_game_button"
+	        android:layout_height="fill_parent"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+			android:text="@string/new_game"
+            android:onClick="newGame"
+			android:textSize="18sp"  />
+	</LinearLayout>	 	
+</LinearLayout>

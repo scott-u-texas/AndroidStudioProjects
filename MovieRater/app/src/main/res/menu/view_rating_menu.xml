@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/editItem"
+        android:alphabeticShortcut="e"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:orderInCategory="1"
+        android:title="@string/menuitem_edit_rating"
+        android:titleCondensed="@string/menuitem_edit_rating"
+        android:showAsAction="ifRoom">
+    </item>
+    <item
+        android:id="@+id/deleteItem"
+        android:alphabeticShortcut="d"
+        android:icon="@android:drawable/ic_delete"
+        android:orderInCategory="2"
+        android:title="@string/menuitem_delete_rating"
+        android:titleCondensed="@string/menuitem_delete_rating"
+        android:showAsAction="ifRoom">
+    </item>
+
+</menu>

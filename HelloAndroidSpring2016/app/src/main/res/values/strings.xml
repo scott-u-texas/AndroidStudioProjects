@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Hello Android Spring 2016</string>
+    <string name="action_settings">Settings</string>
+</resources>

@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">AudioRecord</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_audio_record">AudioRecord</string>
+    <string name="record_audio">Record Audio</string>
+    <string name="play_last_recording">Play Last Recording</string>
+    <string name="stop_recording">Stop Recording</string>
+
+</resources>

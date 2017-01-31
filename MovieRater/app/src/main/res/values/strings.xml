@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, MovieRaterActivity!</string>
+    <string name="app_name">MovieRater</string>
+    <string name="label_name">Title</string>
+    <string name="label_rating">Rating</string>
+    <string name="label_genre">Genre</string>
+    <string name="label_date_seen">Date Seen</string>
+    <string name="label_tag1">TAG 1</string>
+    <string name="label_tag2">TAG 2</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_add_rating">Add Rating</string>
+    <string name="button_save_rating">Save Rating</string>
+    <string name="menuitem_add_rating">Add Rating</string>
+    <string name="menuitem_edit_rating">Edit Rating</string>
+    <string name="menuitem_delete_rating">Delete Rating</string>
+    <string name="confirmTitle">Are You Sure?</string>
+    <string name="confirmMessage">This will permanently delete the rating</string>
+    <string name="errorButton">OK</string>
+    <string name="errorTitle">Movie Name is Required</string>
+    <string name="errorMessage">You must enter a movie name</string>
+    <string name="title">Title</string>
+    <string name="save_rating_button">Save Rating</string>
+
+</resources>

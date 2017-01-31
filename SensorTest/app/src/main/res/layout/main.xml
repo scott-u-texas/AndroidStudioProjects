@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/accelerometer_button"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_gravity="left"
+            android:onClick="selectAccelerometer"
+            android:text="Accelerometer" />
+
+        <Button
+            android:id="@+id/lienar_acceleration"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_gravity="right"
+            android:onClick="selectLinearAcceleration"
+            android:text="Linear Acceleration" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/x_axis_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="x Axis"
+        android:textColor="#fff"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/x_axis_value"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="No value yet"
+        android:textColor="#fff"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/y_axis_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="y Axis"
+        android:textColor="#fff"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/y_axis_value"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="No value yet"
+        android:textColor="#fff"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/z_axis_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="z Axis"
+        android:textColor="#fff"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/z_axis_value"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="No value yet"
+        android:textColor="#fff"
+        android:textSize="28sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center" >
+
+        <ToggleButton
+            android:id="@+id/stopUpdates"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:onClick="setCurrentOrMax"
+            android:text="ToggleButton"
+            android:textOff="Current"
+            android:textOn="Maximum"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:onClick="resetMax"
+            android:text="Reset Max"
+            android:textColor="#000"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+</LinearLayout>

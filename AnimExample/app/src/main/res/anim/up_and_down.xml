@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translate
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromYDelta="0"
+    android:toYDelta="700"
+    android:duration="2000"
+    android:repeatCount="infinite"
+    android:repeatMode="reverse"/>
+
+    

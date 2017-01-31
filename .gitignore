@@ -45,3 +45,29 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+#Projects I don't want to share and AndroidStudio Cruft
+/ClassCodeSamples
+/MyApplication
+/MyFirstApp
+/Tutorial1
+/Tutorials
+/t3_initial
+/usb_driver
+/Random Art BAD VERSION
+/Random_Art_Bad_Version
+/RandomArtThreaded
+/RandomArtThreaded_UsingFirebase
+/*Tutorial
+/*_scottm
+t*.zip
+**/.gradle
+**/gradle
+**/captures
+**/local.properties
+**/.idea/workspace.xml
+**/.idea/libraries
+**/.DS_Store
+**/build
+**/app/build
+/maps

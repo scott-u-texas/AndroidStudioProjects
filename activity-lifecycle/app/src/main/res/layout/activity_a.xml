@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+Copyright (C) 2012 The Android Open Source Project
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dark_blue"
+        android:orientation="vertical"
+        android:padding="8dip">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingBottom="16dip"
+            android:text="@string/activity_a"
+            android:textColor="@color/light_blue"
+            android:textSize="@dimen/font_large" />
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_start_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="startActivityB"
+                android:text="@string/btn_start_b_label" />
+
+            <Button
+                android:id="@+id/btn_start_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/btn_start_b"
+                android:onClick="startActivityC"
+                android:text="@string/btn_start_c_label" />
+
+            <Button
+                android:id="@+id/btn_finish_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/btn_start_c"
+                android:onClick="finishActivityA"
+                android:text="@string/btn_finish_a_label" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_start_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="startDialog"
+            android:text="@string/btn_start_dialog_label"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lifecycle_method_list"
+            android:textColor="@color/light_blue"
+            android:textSize="@dimen/font_medium" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <TextView
+                android:id="@+id/status_view_a"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:padding="4dip"
+                android:textColor="@color/black"
+                android:typeface="monospace" />
+        </ScrollView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_status"
+            android:textColor="@color/light_blue"
+            android:textSize="@dimen/font_medium" />
+
+        <TextView
+            android:id="@+id/status_view_all_a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="4dip"
+            android:textColor="@color/black"
+            android:typeface="monospace" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/on_pause_count"
+            android:textColor="@color/light_blue"
+            android:textSize="@dimen/font_medium" />
+
+        <TextView
+            android:id="@+id/on_pause_count_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="4dip"
+            android:textColor="@color/black"
+            android:typeface="monospace" />
+    </LinearLayout>
+</ScrollView>
+

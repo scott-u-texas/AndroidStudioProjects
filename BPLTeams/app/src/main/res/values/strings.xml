@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BPL Teams</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="random_button">Pick Random</string>
+    <string name="edit_text_hint">Type Something</string>
+    <string name="pick_logo_instructions">Display A BPL Team Logo</string>
+
+    <string-array name="football_clubs">
+        <item>English Premier League</item>
+        <item>Arsenal</item>
+        <item>Aston Villa</item>
+        <item>Bournemouth</item>
+        <item>Chelsea</item>
+        <item>Crystal Palace</item>
+        <item>Everton</item>
+        <item>Leicester City</item>
+        <item>Liverpool</item>
+        <item>Manchester City</item>
+        <item>Manchester United</item>
+        <item>Newcastle United</item>
+        <item>Norwich City</item>
+        <item>Southampton</item>
+        <item>Stoke City</item>
+        <item>Sunderland</item>
+        <item>Swansea</item>
+        <item>Tottenham Hotspur</item>
+        <item>Watford</item>
+        <item>West Bromwich Albion</item>
+        <item>West Ham United</item>
+    </string-array>
+
+</resources>

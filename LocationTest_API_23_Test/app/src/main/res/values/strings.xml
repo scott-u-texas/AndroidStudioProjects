@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ ! Excerpted from "Hello, Android! 3e",
+ ! published by The Pragmatic Bookshelf.
+ ! Copyrights apply to this code. It may not be used to create training material, 
+ ! courses, books, articles, and the like. Contact us if you are in doubt.
+ ! We make no guarantees that this code is fit for any purpose. 
+ ! Visit http://www.pragmaticprogrammer.com/titles/eband3 for more book information.
+-->
+<resources>
+    <string name="app_name">LocationTest</string>
+    <string name="gdc_lat">30.286263</string>
+    <string name="gdc_long">-97.736828</string>
+    <string name="gps">GPS</string>
+    <string name="network">Network</string>
+    <string name="show_address">Show Address</string>
+    <string name="notify_near_gdc">Set GDC Alert</string>
+    <string name="near_gdc">You are near GDC. Thanks for visiting!!!!!</string>
+    <string name="show_map">Show Map</string>
+</resources>

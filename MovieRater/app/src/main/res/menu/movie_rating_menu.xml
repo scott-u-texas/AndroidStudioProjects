@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+   <item android:id="@+id/addRatingItem"
+      android:title="@string/menuitem_add_rating" 
+      android:icon="@android:drawable/ic_menu_add"
+      android:titleCondensed="@string/menuitem_add_rating"
+      android:alphabeticShortcut="e"
+      android:showAsAction="ifRoom"></item>
+</menu>

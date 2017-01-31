@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enterName"
+        android:textSize="30dip" />
+
+    <EditText
+        android:id="@+id/enterNameEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ellipsize="start"
+        android:gravity="center"
+        android:hint="@string/hint"
+        android:imeOptions="actionDone"
+        android:inputType="textCapWords" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="197dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:onClick="done"
+        android:text="@string/done" />
+
+    <EditText
+        android:id="@+id/user_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="top"
+        android:imeOptions="actionDone"
+        android:inputType="textCapSentences"
+        android:paddingLeft="5dip"
+        android:paddingRight="5dip"
+        android:singleLine="false" >
+
+        <requestFocus />
+    </EditText>
+
+</LinearLayout>

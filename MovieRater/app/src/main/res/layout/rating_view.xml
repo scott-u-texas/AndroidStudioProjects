@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:stretchColumns="1" >
+
+        <TableRow
+            android:id="@+id/nameTableRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/nameLabelTextView"
+                style="@style/RatingLabelTextView"
+                android:text="@string/label_name" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/nameTextView"
+                style="@style/RatingTextView" >
+            </TextView>
+        </TableRow>
+    </TableLayout>
+
+    <RatingBar
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clickable="false"
+        android:isIndicator="true"
+        android:numStars="5" >
+    </RatingBar>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:stretchColumns="1" >
+
+        <TableRow
+            android:id="@+id/genreTableRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/genreLabelTextView"
+                style="@style/RatingLabelTextView"
+                android:text="@string/label_genre" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/genreTextView"
+                style="@style/RatingTextView" >
+            </TextView>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/dateSeenTableRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/dateSeetLabelTextView"
+                style="@style/RatingLabelTextView"
+                android:text="@string/label_date_seen" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/dateSeenTextView"
+                style="@style/RatingTextView" >
+            </TextView>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tag1TableRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tag1LabelTextView"
+                style="@style/RatingLabelTextView"
+                android:text="@string/label_tag1" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tag1TextView"
+                style="@style/RatingTextView" >
+            </TextView>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tag2TableRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tag2LabelTextView"
+                style="@style/RatingLabelTextView"
+                android:text="@string/label_tag2" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/tag2TextView"
+                style="@style/RatingTextView" >
+            </TextView>
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="examples.scottm.smsreminder.SMS_List">
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:text="@string/get_single_contact"
+        android:id="@+id/single_contact_button"
+        android:onClick="getSingleContact"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:text="@string/get_multiple_contacts"
+        android:id="@+id/multiple_contact_button"
+        android:onClick="getMultipleContact"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:padding = "10dp"
+        android:textColor="#000"
+        android:id="@+id/contact_info"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/contact_info_header" />
+
+
+</LinearLayout>

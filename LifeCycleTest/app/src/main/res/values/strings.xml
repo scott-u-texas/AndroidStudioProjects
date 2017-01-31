@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, LifeCycleTestActivity!</string>
+    <string name="app_name">LifeCycleTest</string>
+    <string name="title">Life Cycle Tester!!!!</string>
+    <string name="clickForActivityButtonTitle">CLICK ME!</string>
+    <string name="button2Title">Play Sound</string>
+    <string name="getName">Name Getter</string>
+    <string name="enterName">Enter Your Name Please</string>
+    <string name="done">Click When Done</string>
+    <string name="numResume"> onResume Calls: </string>
+    <string name="hint">Type your name</string>
+
+</resources>

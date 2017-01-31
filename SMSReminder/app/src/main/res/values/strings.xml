@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SMS Reminder</string>
+    <string name="get_single_contact">Get Single Contact</string>
+    <string name="get_multiple_contacts">Get Multiple Contacts</string>
+    <string name="contact_info_header">CONTACT INFO:</string>
+    <string name="done_choosing">Done Choosing</string>
+    <string name="dummy">DUMMY</string>
+</resources>

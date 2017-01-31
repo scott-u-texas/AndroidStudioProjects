@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">GuessFour</string>
+	<string name="main_title">Guess Four</string>
+	<string name="continue_label">Continue</string>
+	<string name="new_label">New Game</string>
+	<string name="about_label">About GuessFour</string>
+	<string name="exit_label">Exit Game</string>
+	<string name="done_label">Done</string>
+	<string name="about_title">About GuessFour</string>
+	<string name="about_text">
+		GuessFour is a logic game. Try to guess the secret
+		code that has been chosen. The code contains four colored pegs.
+		The pegs may be blue, green, orange, purple, red, or yellow.\n\n
+		Guess the color and order of the pegs in the code.
+		After each guess you get feedback. Each white feedback peg indicates one of
+		your
+		pegs is the right color, but is in the wrong position. Each black feedback
+		peg
+		indicates one of your pegs is the right color
+		<b>and</b>
+		in the right
+		position. You are not told which of your pegs generate the feedback pegs.\n\n
+		You have 12 guesses to crack the code.\n\n
+		The easy version of the game has a code with 3 pegs and only uses 4 colors of pegs.\n\n
+		The hard version of the game has a code with 5 pegs and 8 colors of pegs. (pink and teal)\n\n
+	</string>
+	<string name="settings_label">Settings...</string>
+	<string name="settings_title">GuessFour settings</string>
+	<string name="settings_shortcut">s</string>
+	<string name="music_title">Music</string>
+	<string name="music_summary">Play background music</string>
+	<string name="hints_title">Hints</string>
+	<string name="hints_summary">Show hints during play</string>
+	<string name="new_game_title">Select Difficulty</string>
+	<string name="easy_label">Easy (3 pegs - 4 colors)</string>
+	<string name="traditional_label">Traditional (4 pegs - 6 colors)</string>
+	<string name="hard_label">Hard (5 pegs - 8 colors)</string>
+	<string name="game_title">Guess Four Game</string>
+	<string name="clear_peg">Clear Peg</string>
+	<string name="guess">Make Guess</string>
+	<string name="new_game">New Game</string>
+	<string name="code_full_message">Your guess is complete. Press \"Make Guess\" to enter enter or \"Clear Peg\" to remove your last selection.</string>
+	<string name="code_empty_message">There are no pegs in your guess. Press a colored rectangle to the right to add a peg of that color to your guess.</string>
+	<string name="code_not_full_error">Your guess is not complete. Add pegs by pressing the colored rectangles to the right.</string>
+	<string name="win">You guessed the secret code!!!</string>
+	<string name="lost">You are out of guesses. Try again.</string>
+</resources>
+

@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">CountyList</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_country">CountryActivity</string>
+    <string name="safe">Safe?</string>
+    <string name="no">NO</string>
+    <string name="yes">Yes!</string>
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="difficulty">
+    	<item>@string/easy_label</item>
+    	<item>@string/traditional_label</item>
+    	<item>@string/hard_label</item>
+    </array>
+    <array name="peg_colors">
+    	<item>@color/red</item>
+    	<item>@color/green</item>
+    	<item>@color/blue</item>
+    	<item>@color/yellow</item>
+    	<item>@color/orange</item>
+    	<item>@color/purple</item>
+    	<item>@color/pink</item>
+    	<item>@color/teal</item>
+    </array>
+</resources>
