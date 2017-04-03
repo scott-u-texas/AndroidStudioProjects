@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/label_tag1"
             android:imeOptions="actionNext"
-            android:inputType="text" >
+            android:inputType="textCapWords" >
         </EditText>
 
         <EditText
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/label_tag2"
             android:imeOptions="actionDone"
-            android:inputType="text" >
+            android:inputType="textCapWords" >
         </EditText>
 
         <Button

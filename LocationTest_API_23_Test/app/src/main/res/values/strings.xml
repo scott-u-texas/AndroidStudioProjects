@@ -16,4 +16,8 @@
     <string name="notify_near_gdc">Set GDC Alert</string>
     <string name="near_gdc">You are near GDC. Thanks for visiting!!!!!</string>
     <string name="show_map">Show Map</string>
+    <string name="lack_fine_location">We DO NOT have permission for fine location.\"</string>
+    <string name="lack_coarse_location">We DO NOT have permission for coarse location.</string>
+    <string name="have_coarse_permission">We have permission for coarse location.</string>
+    <string name="have_fine_permission">We have permission for fine location.</string>
 </resources>

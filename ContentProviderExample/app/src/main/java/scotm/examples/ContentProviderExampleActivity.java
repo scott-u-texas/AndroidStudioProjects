@@ -204,8 +204,7 @@ public class ContentProviderExampleActivity extends ListActivity {
                            String value) {
             Bitmap bitmap = MediaStore.Images.Thumbnails.getThumbnail(
                     context.getContentResolver(), Integer.parseInt(value),
-                    MediaStore.Images.Thumbnails.MICRO_KIND, null
-            );
+                    MediaStore.Images.Thumbnails.MICRO_KIND, null);
             if (bitmap != null) {
                 v.setImageBitmap(bitmap);
             }

@@ -30,7 +30,8 @@ public class BoardView extends View {
 	private Circ[][] userGuesses;
 	private Circ[][] feedback; 
 	private Circ[] secretCode;
-	
+    private boolean gradient = false;
+
 	public BoardView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		Log.d(TAG, " in the 2 parameter constructor");
@@ -193,26 +194,30 @@ public class BoardView extends View {
 		int EMPTY_PEG_OUTER = getResources().getColor(R.color.empty_peg_outer);
 		int EMPTY_PEG_INNER = getResources().getColor(R.color.empty_peg_inner);
 		Paint pegPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		
+        // Paint pegPaint = new Paint();
+        Log.d(TAG, "Paint anti alias: " + pegPaint.isAntiAlias());
 		for(int row = 0; row < userGuesses.length; row++) {
 			for(int col = 0; col < userGuesses[0].length; col++) {
 				Peg currentPeg = game.getPeg(row, col);
 				Circ c = userGuesses[row][col];
 				RadialGradient rg;
-				if(currentPeg != null)
-						rg = new RadialGradient(c.x, c.y - 4, c.r, 
+				if(currentPeg != null) {
+						rg = new RadialGradient(c.x, c.y - 4, c.r,
 								Color.WHITE, game.getPegColor(currentPeg), Shader.TileMode.CLAMP);
-						// pegPaint.setColor(game.getPegColor(currentPeg));
-				else
-					rg = new RadialGradient(c.x, c.y + 4, c.r, 
+					pegPaint.setColor(game.getPegColor(currentPeg));
+				} else {
+					rg = new RadialGradient(c.x, c.y + 4, c.r,
 							EMPTY_PEG_INNER, EMPTY_PEG_OUTER, Shader.TileMode.CLAMP);
-					// pegPaint.setShader(rg);
-				pegPaint.setShader(rg);
+					pegPaint.setColor(EMPTY_PEG_OUTER);
+				}
+				if (gradient) {
+                    pegPaint.setShader(rg);
+                }
 				canvas.drawCircle(c.x, c.y, c.r, pegPaint);
 			}
 		}
 	}
-	
+
 	private void drawFeedback(Canvas canvas) {
 		Paint blackPaint = new Paint();
         blackPaint.setColor(Color.BLACK);
@@ -250,9 +255,13 @@ public class BoardView extends View {
 			Paint pegPaint = new Paint();
 			for(int i = 0; i < secretCode.length; i++) {
 				Circ c = secretCode[i];
-				RadialGradient rg = new RadialGradient(c.x, c.y - 4, c.r, 
-						Color.WHITE, game.getPegColor(game.getSecretPeg(i)), Shader.TileMode.CLAMP);
-				pegPaint.setShader(rg);
+				if (gradient) {
+                    RadialGradient rg = new RadialGradient(c.x, c.y - 4, c.r,
+                            Color.WHITE, game.getPegColor(game.getSecretPeg(i)), Shader.TileMode.CLAMP);
+                    pegPaint.setShader(rg);
+                } else {
+                    pegPaint.setColor(game.getPegColor(game.getSecretPeg(i)));
+                }
 				canvas.drawCircle(c.x, c.y, c.r, pegPaint);
 			}
 		}

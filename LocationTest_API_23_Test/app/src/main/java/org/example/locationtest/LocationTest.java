@@ -1,11 +1,6 @@
 /***
  * Excerpted from "Hello, Android! 3e",
- * published by The Pragmatic Bookshelf.
- * Copyrights apply to this code. It may not be used to create training material,
- * courses, books, articles, and the like. Contact us if you are in doubt.
- * We make no guarantees that this code is fit for any purpose.
- * Visit http://www.pragmaticprogrammer.com/titles/eband3 for more book information.
- ***/
+ * published by The Pragmatic Bookshelf.*/
 package org.example.locationtest;
 
 import android.Manifest;
@@ -36,6 +31,7 @@ import android.widget.ToggleButton;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -62,23 +58,17 @@ public class LocationTest extends AppCompatActivity {
     private int tryCount;
     private Location lastKnownLocation;
     private boolean locationPermissionsGranted;
+    private boolean haveDumpedProviders;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
         mLocationListeners = new ArrayList<>();
-
         mgr = (LocationManager) getSystemService(LOCATION_SERVICE);
-
         output = (TextView) findViewById(R.id.output);
         scrollView = (ScrollView) findViewById(R.id.scroll_view_1);
         toggleButton = (ToggleButton) findViewById(R.id.toggleButton);
-
-        log("Location providers:");
-        dumpProviders();
-
         Criteria criteria = new Criteria();
         String best = mgr.getBestProvider(criteria, true);
         log("\nBest provider is:   " + best);
@@ -86,6 +76,7 @@ public class LocationTest extends AppCompatActivity {
         // keep screen on
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
+
 
     public void toggleLocationProvider(View v) {
         if (toggleButton.isChecked()) {
@@ -103,13 +94,14 @@ public class LocationTest extends AppCompatActivity {
         double gdcLong = Double.parseDouble(getString(R.string.gdc_long));
         Intent showLeavingGDCIntent = new Intent(this, LeavingGDC.class);
         int requestCode = 2008;
-        PendingIntent showLeavingGDPendingIntent
+        PendingIntent showLeavingGDCPendingIntent
                 = PendingIntent.getActivity(this,
                 requestCode, showLeavingGDCIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            mgr.addProximityAlert(gdcLat, gdcLong, 100, -1, showLeavingGDPendingIntent);
+            mgr.addProximityAlert(gdcLat, gdcLong,
+                    100, -1, showLeavingGDCPendingIntent);
         }
     }
 
@@ -148,15 +140,12 @@ public class LocationTest extends AppCompatActivity {
             double lat = lastKnownLocation.getLatitude();
             double lng = lastKnownLocation.getLongitude();
             String locationURI = "geo:" + lat + "," + lng;
-            // locationURI += "?z=15";
+            //locationURI += "?z=5";
             Uri uriForMappingIntent = Uri.parse(locationURI);
 
 //            locationURI = "geo:0,0?q="
 //                    + lat + "," + lng
 //                    + "(Current Location)";
-
-            uriForMappingIntent
-                    = Uri.parse(locationURI);
 
             // Create an Intent from gmmIntentUri.
             // Set the action to ACTION_VIEW
@@ -263,6 +252,15 @@ public class LocationTest extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        checkPermissions();
+
+        if (!locationPermissionsGranted) {
+            requestLocationPermissions();
+        }
+    }
 
     @Override
     protected void onResume() {
@@ -276,17 +274,18 @@ public class LocationTest extends AppCompatActivity {
         // SimpleLocationListener sll = new SimpleLocationListener();
 //        mLocationListeners.add(sll);
 //        mgr.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, sll);
-//        
+//
         // TO SEE GPS INFO AND STATUS
         // SimpleLocationListener sll = new SimpleLocationListener();
         // mLocationListeners.add(sll);
         // mgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, sll);
 ////        mgr.addGpsStatusListener(gpsStatusListener);
 
-        checkPermissions();
 
-        if (!locationPermissionsGranted) {
-            requestLocationPermissions();
+        if (locationPermissionsGranted && !haveDumpedProviders) {
+            haveDumpedProviders = true;
+            log("Location providers:");
+            dumpProviders();
         }
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
@@ -308,9 +307,29 @@ public class LocationTest extends AppCompatActivity {
     }
 
     private void requestLocationPermissions() {
-        ActivityCompat.requestPermissions(this,
-                new String[]{Manifest.permission_group.LOCATION},
-                MY_PERMISSIONS_REQUEST_GET_LOCATION);
+        log("Requesting Permission for Location");
+        Log.d(TAG, "Requesting Permission for Location");
+        // Should we show an explanation?
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.READ_CONTACTS)) {
+
+            // Show an explanation to the user (likely with a
+            // dialog) *asynchronously* -- don't block
+            // this thread waiting for the user's response! After the user
+            // sees the explanation, try again to request the permission.
+
+        } else {
+            // No explanation needed, we can request the permission.
+            ActivityCompat.requestPermissions(this,
+                    new String[]{
+                            Manifest.permission.ACCESS_COARSE_LOCATION,
+                            Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_GET_LOCATION);
+
+            // MY_PERMISSIONS_REQUEST_GET_LOCATION is an
+            // app-defined int constant. The callback method gets the
+            // result of the request.
+        }
 
     }
 
@@ -318,6 +337,10 @@ public class LocationTest extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[],
                                            int[] grantResults) {
+        log("onRequestPermissionsResult");
+        Log.d(TAG, "onRequestPermissionsResult");
+        Log.d(TAG, "permissions: " + Arrays.toString(permissions));
+        Log.d(TAG, "results: " + Arrays.toString(grantResults));
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_GET_LOCATION: {
                 // If request is cancelled, the result arrays are empty.
@@ -330,21 +353,21 @@ public class LocationTest extends AppCompatActivity {
     }
 
     private void checkPermissions() {
-        // Assume thisActivity is the current activity
-        int permissionCoarse = ContextCompat.checkSelfPermission(this,
+        int permissionCoarse
+                = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_COARSE_LOCATION);
-        int permissionFine = ContextCompat.checkSelfPermission(this,
+        int permissionFine
+                = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
-        log("Permission checks:");
         if (permissionCoarse == PackageManager.PERMISSION_GRANTED) {
-            log("We have permission for coarse location.");
+            log(getString(R.string.have_coarse_permission));
         } else {
-            log("We DO NOT have permission for coarse location.");
+            log(getString(R.string.lack_coarse_location));
         }
         if (permissionFine == PackageManager.PERMISSION_GRANTED) {
-            log("We have permission for fine location.");
+            log(getString(R.string.have_fine_permission));
         } else {
-            log("We DO NOT have permission for fine location.");
+            log(getString(R.string.lack_fine_location));
         }
         locationPermissionsGranted =
                 permissionCoarse == PackageManager.PERMISSION_GRANTED
@@ -455,7 +478,12 @@ public class LocationTest extends AppCompatActivity {
         public void onGpsStatusChanged(int event) {
             Log.d("Location Test", "gps status changed");
             log("\n-- GPS STATUS HAS CHANGED -- " + "\n" + GPS_EVENTS[event - 1]);
-            gps = mgr.getGpsStatus(null);
+            int permissionResult
+                    = ActivityCompat.checkSelfPermission(LocationTest.this,
+                    Manifest.permission.ACCESS_FINE_LOCATION);
+            if (permissionResult == PackageManager.PERMISSION_GRANTED) {
+                gps = mgr.getGpsStatus(null);
+            }
             showSats();
         }
     };

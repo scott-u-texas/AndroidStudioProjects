@@ -73,7 +73,7 @@ public class MovingButtonActivity extends Activity {
 
         anim.setRepeatCount(ObjectAnimator.INFINITE);
         anim.setRepeatMode(ObjectAnimator.REVERSE);
-        anim.setDuration(6000);
+        anim.setDuration(3000);
         anim.start();
     }
 

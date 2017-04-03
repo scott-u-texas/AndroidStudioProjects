@@ -1,8 +1,13 @@
 package scottm.examples;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 public class GraphicsExamplesActivity extends Activity implements View.OnClickListener {
@@ -20,7 +25,6 @@ public class GraphicsExamplesActivity extends Activity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         bv = (BalloonView) findViewById(R.id.graphics_view);
-        // in onCreate for Activity
         animator = new AnimationLoop(bv, FPS);
         Log.d("GraphicsView", "gv object: " + bv);
         bv.setOnClickListener(this);
@@ -56,6 +60,28 @@ public class GraphicsExamplesActivity extends Activity implements View.OnClickLi
         super.onStop();
         if (animator.isRunning()) {
             animator.stop();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        FragmentManager fm = getFragmentManager();
+        switch (item.getItemId()) {
+            case R.id.bad_animation_activity:
+                Intent intent = new Intent(this, BadAnimationActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

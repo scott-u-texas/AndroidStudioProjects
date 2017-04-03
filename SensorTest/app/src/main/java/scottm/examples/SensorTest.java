@@ -20,7 +20,7 @@ public class SensorTest extends Activity {
 
     private static final String TAG = "SensorTest";
     private static final int UPDATE_INTERVAL = 200;
-    
+
     private TextView[] sensorValues;
     private SensorManager sensorManager;
 
@@ -31,7 +31,9 @@ public class SensorTest extends Activity {
     private long lastTime;
     private boolean useAccelerator;
 
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "in onCreate");
@@ -46,12 +48,13 @@ public class SensorTest extends Activity {
                 (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         lastTime = System.currentTimeMillis() - 1000;
+        showSensors();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if(useAccelerator)
+        if (useAccelerator)
             selectAccelerometer(null);
         else
             selectLinearAcceleration(null);
@@ -71,21 +74,23 @@ public class SensorTest extends Activity {
 
         Log.d(TAG, sensors.toString());
 
-        for(Sensor s : sensors)
-            Log.d(TAG, s.getName() + " " + s.getVendor() );
+        int sensorNumber = 1;
+        for (Sensor s : sensors) {
+            Log.d(TAG, sensorNumber++ + " " + s.getName() + " " + s.getVendor());
+        }
 
-                for(Sensor s : sensors) {
-                    Log.d(TAG, s.getName() + " - minDelay: "
-                            + s.getMinDelay() + ", power: " + s.getPower());
-                    Log.d(TAG, "max range: " + s.getMaximumRange()
-                            + ", resolution: " + s.getResolution());
-                }
+        for (Sensor s : sensors) {
+            Log.d(TAG, s.getName() + " - minDelay: "
+                    + s.getMinDelay() + ", power: " + s.getPower());
+            Log.d(TAG, "max range: " + s.getMaximumRange()
+                    + ", resolution: " + s.getResolution());
+        }
     }
 
     private void getTextViews() {
         int[] ids = {R.id.x_axis_value, R.id.y_axis_value, R.id.z_axis_value};
         sensorValues = new TextView[3];
-        for(int i = 0; i < sensorValues.length; i++)
+        for (int i = 0; i < sensorValues.length; i++)
             sensorValues[i] = (TextView) this.findViewById(ids[i]);
     }
 
@@ -112,13 +117,13 @@ public class SensorTest extends Activity {
 
         // Pick the Google LA Sensor if it exists
         List<Sensor> linearAcceleationSensors = sensorManager.getSensorList(Sensor.TYPE_LINEAR_ACCELERATION);
-        for(Sensor s : linearAcceleationSensors)
-            if(s.getVendor().toLowerCase().contains("google"))
+        for (Sensor s : linearAcceleationSensors)
+            if (s.getVendor().toLowerCase().contains("google"))
                 linAclSensor = s;
 
 
         // pick the default Linear acceleration Sensor if didn't find google sensor
-        if(linAclSensor == null) {
+        if (linAclSensor == null) {
             linAclSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
         }
 
@@ -139,13 +144,13 @@ public class SensorTest extends Activity {
 
 
     public void resetMax(View v) {
-        for(int i = 0; i < maxVals.length; i++)
+        for (int i = 0; i < maxVals.length; i++)
             maxVals[i] = 0.0f;
     }
 
     private void displayMax(SensorEvent event) {
-        for(int i = 0; i < maxVals.length; i++)
-            if(Math.abs(event.values[i]) > maxVals[i]) {
+        for (int i = 0; i < maxVals.length; i++)
+            if (Math.abs(event.values[i]) > maxVals[i]) {
                 maxVals[i] = (float) Math.abs(event.values[i]);
                 float value = ((int) (maxVals[i] * 1000)) / 1000f;
                 sensorValues[i].setText("" + value);
@@ -160,46 +165,46 @@ public class SensorTest extends Activity {
 //            sensorValues[i].setText("" + value);
 //        }
 
-       long currentTime = System.currentTimeMillis();
-       if(currentTime - this.lastTime > UPDATE_INTERVAL) {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - this.lastTime > UPDATE_INTERVAL) {
 
-            for(int i = 0; i < sensorValues.length; i++) {
+            for (int i = 0; i < sensorValues.length; i++) {
                 float value = event.values[i];
                 value = ((int) (value * 1000)) / 1000f;
                 sensorValues[i].setText("" + value);
             }
-           lastTime = currentTime;
-       }
+            lastTime = currentTime;
+        }
     }
 
     private SensorEventListener sensorEventListener =
             new SensorEventListener() {
 
-        @Override
-        public void onSensorChanged(SensorEvent event) {
-            // Log.d(TAG, event.toString());
+                @Override
+                public void onSensorChanged(SensorEvent event) {
+                    // Log.d(TAG, event.toString());
 
-            // accelerationValues[0].setText("" + event.values[0]);
-            if(displayCurrent)
-                displayCurrent(event);
-            else
-                displayMax(event);
+                    // accelerationValues[0].setText("" + event.values[0]);
+                    if (displayCurrent)
+                        displayCurrent(event);
+                    else
+                        displayMax(event);
 
-            // displayCurrentRotation(event);
-        }
+                    // displayCurrentRotation(event);
+                }
 
-        //        @Override
-        public void onAccuracyChanged(Sensor sensor, int accuracy) {
-            // nothing to do!
-        }
+                //        @Override
+                public void onAccuracyChanged(Sensor sensor, int accuracy) {
+                    // nothing to do!
+                }
 
-        public void stop() {
-            // make sure to turn our sensor off when the activity is paused
-            sensorManager.unregisterListener(this);
-        }
+                public void stop() {
+                    // make sure to turn our sensor off when the activity is paused
+                    sensorManager.unregisterListener(this);
+                }
 
 
-    };
+            };
 }
 
 /* Code we were experienting with for rotation sensors:

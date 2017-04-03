@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 10
+    compileSdkVersion 16
     buildToolsVersion "21.1.2"
 
     defaultConfig {
         applicationId "scottm.examples"
-        minSdkVersion 10
-        targetSdkVersion 10
+        minSdkVersion 16
+        targetSdkVersion 23
     }
 
     buildTypes {

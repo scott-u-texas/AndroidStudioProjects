@@ -36,7 +36,6 @@ public class BalloonView extends View {
     public BalloonView (Context context, AttributeSet attrs) {
         super(context, attrs);
         initialize();
-
     }
 
     public BalloonView(Context context, AttributeSet attrs,
