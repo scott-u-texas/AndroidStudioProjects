@@ -38,8 +38,10 @@
         android:id="@+id/random_button"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:textSize="32sp"
-        android:onClick="pickRandom" />
+
+        android:textSize="32sp"/>
+
+    <!--android:onClick="pickRandom"-->
 
     <Button
         android:text="@string/best_team"

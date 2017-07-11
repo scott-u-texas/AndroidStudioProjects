@@ -178,7 +178,7 @@ public class MainActivity
                             Intent externalActivityIntent = new Intent(Intent.ACTION_PICK);
                             externalActivityIntent.setType("image/*");
                             externalActivityIntent.addFlags(
-                                    Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+                                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
                             startActivity(externalActivityIntent);
                         }
                     });

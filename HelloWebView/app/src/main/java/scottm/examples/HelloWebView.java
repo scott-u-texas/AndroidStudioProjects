@@ -17,9 +17,10 @@ public class HelloWebView extends Activity {
 
 	    mWebView = (WebView) findViewById(R.id.webview);
 	    mWebView.getSettings().setJavaScriptEnabled(true);
-	    mWebView.loadUrl("http://www.shutterfly.com");
-	    
-	    mWebView.setWebViewClient(new HelloWebViewClient());
+	    // mWebView.loadUrl("http://www.shutterfly.com");
+		mWebView.loadUrl("http://m.utexas.edu");
+
+		mWebView.setWebViewClient(new HelloWebViewClient());
 	}
 	
 	

@@ -6,8 +6,8 @@ android {
 
     defaultConfig {
         applicationId "com.cookbook.SMSresponser"
-        minSdkVersion 19
-        targetSdkVersion 21
+        minSdkVersion 17
+        targetSdkVersion 23
     }
 
     buildTypes {

@@ -330,7 +330,6 @@ public class LocationTest extends AppCompatActivity {
             // app-defined int constant. The callback method gets the
             // result of the request.
         }
-
     }
 
     @Override

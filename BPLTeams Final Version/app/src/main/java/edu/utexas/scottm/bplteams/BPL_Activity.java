@@ -24,6 +24,7 @@ public class BPL_Activity extends Activity {
     // except for upper / lower case case and _ instead of spaces.
     private ArrayList<Integer> imageIDs;
     private String bestTeam = "Chelsea";
+    private ImageView teamCrest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class BPL_Activity extends Activity {
         setContentView(R.layout.activity_bpl_); // sets layout
         getImageIDs();
         setSpinnerListener();
+        teamCrest = (ImageView) (ImageView) findViewById(R.id.imageView);
          //setRandomButtonListener(); // comment out if onClick attribute set in XML
         // setBestButton();
     }
@@ -38,6 +40,7 @@ public class BPL_Activity extends Activity {
     public void showBest(View v) {
         bestTeam += "!";
         ((Button)v).setText(bestTeam);
+        teamCrest.setImageResource(R.drawable.chelsea);
     }
 
 //    private void setBestButton() {
@@ -83,8 +86,7 @@ public class BPL_Activity extends Activity {
             newIndex = randNumGen.nextInt(imageIDs.size() - 1) + 1;
         }
         Log.d(TAG, "new index  = " + newIndex);
-        ImageView iv = (ImageView) findViewById(R.id.imageView);
-        iv.setImageResource(imageIDs.get(newIndex));
+        teamCrest.setImageResource(imageIDs.get(newIndex));
         spinner.setSelection(newIndex);
     }
 
@@ -108,8 +110,7 @@ public class BPL_Activity extends Activity {
                             newIndex = randNumGen.nextInt(imageIDs.size() - 1) + 1;
                         }
                         Log.d(TAG, "new index  = " + newIndex);
-                        ImageView iv = (ImageView) findViewById(R.id.imageView);
-                        iv.setImageResource(imageIDs.get(newIndex));
+                        teamCrest.setImageResource(imageIDs.get(newIndex));
                         spinner.setSelection(newIndex);
                     }
                 });
@@ -124,8 +125,7 @@ public class BPL_Activity extends Activity {
                     @Override
                     public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                         Log.d(TAG, "id of selected item: " + position);
-                        ImageView iv = (ImageView) findViewById(R.id.imageView);
-                        iv.setImageResource(imageIDs.get(position));
+                        teamCrest.setImageResource(imageIDs.get(position));
                     }
 
                     @Override
