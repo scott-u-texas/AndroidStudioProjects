@@ -6,21 +6,21 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pick_logo_instructions"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_gravity="center" />
+    android:id="@+id/textView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/pick_logo_instructions"
+    android:textSize="25sp"
+    android:textStyle="bold"
+    android:layout_gravity="center" />
 
     <Spinner
         android:id="@+id/football_club_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
+        android:layout_margin="20dp"
         android:entries="@array/football_clubs"
-        android:layout_margin="20dp" />
+        android:spinnerMode="dropdown" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -32,14 +32,15 @@
 
 
     <Button
+        android:id="@+id/random_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/random_button"
-        android:id="@+id/random_button"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
+        android:onClick="pickRandom"
 
-        android:textSize="32sp"/>
+        android:text="@string/random_button"
+        android:textSize="32sp" />
 
     <!--android:onClick="pickRandom"-->
 
@@ -51,6 +52,5 @@
         android:id="@+id/best"
         android:textSize="32sp"
         android:onClick="showBest"/>
-
 
 </LinearLayout>

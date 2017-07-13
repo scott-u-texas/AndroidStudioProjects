@@ -24,23 +24,25 @@ public class BPL_Activity extends Activity {
     // except for upper / lower case case and _ instead of spaces.
     private ArrayList<Integer> imageIDs;
     private String bestTeam = "Chelsea";
-    private ImageView teamCrest;
+    private ImageView teamCrestImageView;
+    private Spinner teamPickerSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bpl_); // sets layout
         getImageIDs();
+        teamCrestImageView = (ImageView) findViewById(R.id.imageView);
+        teamPickerSpinner = (Spinner) findViewById(R.id.football_club_spinner);
         setSpinnerListener();
-        teamCrest = (ImageView) (ImageView) findViewById(R.id.imageView);
-         //setRandomButtonListener(); // comment out if onClick attribute set in XML
+        // setRandomButtonListener(); // comment out if onClick attribute set in XML
         // setBestButton();
     }
 
     public void showBest(View v) {
         bestTeam += "!";
         ((Button)v).setText(bestTeam);
-        teamCrest.setImageResource(R.drawable.chelsea);
+        teamCrestImageView.setImageResource(R.drawable.chelsea);
     }
 
 //    private void setBestButton() {
@@ -74,9 +76,7 @@ public class BPL_Activity extends Activity {
     }
 
     public void pickRandom(View v) {
-        Spinner spinner
-                = (Spinner) findViewById(R.id.football_club_spinner);
-        int oldIndex = spinner.getSelectedItemPosition();
+        int oldIndex = teamPickerSpinner.getSelectedItemPosition();
         Log.d(TAG, "old index  = " + oldIndex);
         // don't want to pick the BPL symbol itself, so index 1 - 20
         int newIndex = randNumGen.nextInt(imageIDs.size() - 1) + 1;
@@ -86,8 +86,8 @@ public class BPL_Activity extends Activity {
             newIndex = randNumGen.nextInt(imageIDs.size() - 1) + 1;
         }
         Log.d(TAG, "new index  = " + newIndex);
-        teamCrest.setImageResource(imageIDs.get(newIndex));
-        spinner.setSelection(newIndex);
+        teamCrestImageView.setImageResource(imageIDs.get(newIndex));
+        teamPickerSpinner.setSelection(newIndex);
     }
 
     private void setRandomButtonListener() {
@@ -98,9 +98,7 @@ public class BPL_Activity extends Activity {
                     @Override
                     public void onClick(View v) {
                         // get the current selection
-                        Spinner spinner
-                                = (Spinner) findViewById(R.id.football_club_spinner);
-                        int oldIndex = spinner.getSelectedItemPosition();
+                        int oldIndex = teamPickerSpinner.getSelectedItemPosition();
                         Log.d(TAG, "old index  = " + oldIndex);
                         // don't want to pick the BPL symbol itself, so index 1 - 20
                         int newIndex = randNumGen.nextInt(imageIDs.size() - 1) + 1;
@@ -110,22 +108,20 @@ public class BPL_Activity extends Activity {
                             newIndex = randNumGen.nextInt(imageIDs.size() - 1) + 1;
                         }
                         Log.d(TAG, "new index  = " + newIndex);
-                        teamCrest.setImageResource(imageIDs.get(newIndex));
-                        spinner.setSelection(newIndex);
+                        teamCrestImageView.setImageResource(imageIDs.get(newIndex));
+                        teamPickerSpinner.setSelection(newIndex);
                     }
                 });
     }
 
 
     private void setSpinnerListener() {
-        Spinner spinner = (Spinner) findViewById(R.id.football_club_spinner);
-        spinner.setOnItemSelectedListener(
+        teamPickerSpinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
-
                     @Override
                     public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                         Log.d(TAG, "id of selected item: " + position);
-                        teamCrest.setImageResource(imageIDs.get(position));
+                        teamCrestImageView.setImageResource(imageIDs.get(position));
                     }
 
                     @Override

@@ -30,8 +30,9 @@ public class CountryActivity extends ListActivity {
     // For debugging. Count actual number of row views created.
     private int viewCountForDebug;
 
-    // for regular version
-//    @Override
+    //** *** For Simple Version *** */
+    // Uncomment for examples 1 and 2
+    // @Override
 //    public void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
 //        createModel();
@@ -40,16 +41,33 @@ public class CountryActivity extends ListActivity {
 //        createOnItemClickListener();
 //    }
 
+    // ******************** COMPLEX ROW VERSION **************************
+    // for version with switches
+    // uncomment for example 3 (handle View recycling)
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        List<CountryRowData> list
+                = new ArrayList<CountryRowData>();
+        String[] countries
+                = getResources().getStringArray(R.array.countries);
+        for (String s : countries) {
+            list.add(new CountryRowData(s, true));
+        }
+        Log.d(TAG, "number of countries = " + list.size());
+        setListAdapter(new SafeAdapter(list)); // to override the behavior of recyclying and set safe switch correctly
+    }
+
     private void setAdapter() {
-//        // for layout that is simply a TextViews
+       /* *** for layout that is simply a TextViews example 1*** */
 //        adapter
 //                = new ArrayAdapter<String>(
-//                this,
+//                this,               // context
 //                R.layout.list_item, // android.R.layout.simple_list_item_1,
-//                countries);
+//                countries);         // model
 
 
-        // for layout with TextView in more complex layout
+        /* *** for layout with TextView in more complex layout example 2 *** */
         adapter
                 = new ArrayAdapter<String>(
                 this, // context
@@ -88,7 +106,7 @@ public class CountryActivity extends ListActivity {
                         toastString,
                         Toast.LENGTH_SHORT).show();
 
-//                // remove item selected from arraylist
+                // remove item selected from arraylist
 //                countries.remove(position);
 //                adapter.notifyDataSetChanged();
 
@@ -108,22 +126,7 @@ public class CountryActivity extends ListActivity {
         }
     }
 
-    // ******************** COMPLEX ROW VERSION **************************
-    // for version with switches
 
-    @Override
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-        List<CountryRowData> list
-                = new ArrayList<CountryRowData>();
-        String[] countries
-                = getResources().getStringArray(R.array.countries);
-        for (String s : countries) {
-            list.add(new CountryRowData(s, true));
-        }
-        Log.d(TAG, "number of countries = " + list.size());
-        setListAdapter(new SafeAdapter(list));
-    }
 
     private CountryRowData getModel(int position) {
         return (((SafeAdapter) getListAdapter()).getItem(position));
@@ -169,12 +172,12 @@ public class CountryActivity extends ListActivity {
                             }
                         };
                 theSwitch.setOnCheckedChangeListener(l);
-            }
+            } // end of if, first time View created
 
             CountryRowData model = getModel(position);
             theSwitch.setTag(position);
             theSwitch.setChecked(model.safe);
-            return (row);
+            return row;
         }
     }
 
