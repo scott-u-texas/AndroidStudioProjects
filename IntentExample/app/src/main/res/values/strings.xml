@@ -11,5 +11,8 @@
     <string name="title_activity_get_name">GetName</string>
     <string name="type_name_hint">Type Your Name!</string>
     <string name="image_number_tag">image_number</string>
+    <string name="explain_permission">Hi. The app needs access to storage to display the pictures you take. Thanks!</string>
+    <string name="ask_again">Ask Again</string>
+    <string name="no_thanks">No Thanks</string>
 
 </resources>

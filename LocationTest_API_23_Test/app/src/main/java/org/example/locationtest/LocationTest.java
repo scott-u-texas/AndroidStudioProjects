@@ -311,7 +311,7 @@ public class LocationTest extends AppCompatActivity {
         Log.d(TAG, "Requesting Permission for Location");
         // Should we show an explanation?
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                Manifest.permission.READ_CONTACTS)) {
+                Manifest.permission.ACCESS_FINE_LOCATION)) {
 
             // Show an explanation to the user (likely with a
             // dialog) *asynchronously* -- don't block
