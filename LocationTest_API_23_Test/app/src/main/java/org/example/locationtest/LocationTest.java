@@ -147,7 +147,7 @@ public class LocationTest extends AppCompatActivity {
 //                    + lat + "," + lng
 //                    + "(Current Location)";
 
-            // Create an Intent from gmmIntentUri.
+            // Create an Implicit Intents.
             // Set the action to ACTION_VIEW
             Intent mapIntent = new Intent(Intent.ACTION_VIEW,
                     uriForMappingIntent);
@@ -174,7 +174,7 @@ public class LocationTest extends AppCompatActivity {
             Geocoder gc = arg0[0];
             Log.d(TAG, "Geocode is present: " + Geocoder.isPresent());
             addresses = null;
-//            // "forwasrd geocoding": get lat and long from name or address
+//            // "forward geocoding": get lat and long from name or address
 //            try {
 //                addresses = gc.getFromLocationName(
 //                        "713 North Duchesne, St. Charles, MO", 5);

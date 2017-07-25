@@ -24,32 +24,39 @@ public class SimpleMapActivity extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple_map);
-        map = ((MapFragment) getFragmentManager()
-                .findFragmentById(R.id.map))
-                .getMap();
+        MapFragment mapFrag =
+                ((MapFragment) getFragmentManager()
+                .findFragmentById(R.id.map));
 
-        if (map != null) {
-            Marker austin
-                    = map.addMarker(new MarkerOptions()
-                    .position(AUSTIN)
-                    .title("Austin")
-                    .icon(BitmapDescriptorFactory
-                            .fromResource(R.drawable.longhorn)));
+        mapFrag.getMapAsync(new OnMapReadyCallback() {
+                    @Override
+                    public void onMapReady(GoogleMap googleMap) {
+                        map = googleMap;
+                        setMarkers();
+                        // moveCamera();
+                    }
+                });
+    }
 
-            Marker arlington = map.addMarker(new MarkerOptions()
-                    .position(ARLINGTON)
-                    .title("Arlington")
-                    .snippet("Play Ball!!")
-                    .icon(BitmapDescriptorFactory
-                            .fromResource(R.drawable.ic_launcher)));
+    private void setMarkers() {
+        map.addMarker(new MarkerOptions()
+                .position(AUSTIN)
+                .title("Austin")
+                .icon(BitmapDescriptorFactory
+                        .fromResource(R.drawable.longhorn)));
 
-//            CameraUpdate center=
-//                    CameraUpdateFactory.newLatLng(AUSTIN);
-//            CameraUpdate zoom=CameraUpdateFactory.zoomTo(5);
-//
-//            map.moveCamera(center);
-//            map.animateCamera(zoom);
-        }
+        map.addMarker(new MarkerOptions()
+                .position(ARLINGTON)
+                .title("Arlington")
+                .snippet("Play Ball!!")
+                .icon(BitmapDescriptorFactory
+                        .fromResource(R.drawable.ic_launcher)));
+    }
+
+    private void moveCamera() {
+        CameraUpdate centerAndZoom =
+                CameraUpdateFactory.newLatLngZoom(AUSTIN, 5);
+        map.animateCamera(centerAndZoom, 2000, null);
     }
 
 }
