@@ -33,7 +33,7 @@ public class SimpleMapActivity extends Activity  {
                     public void onMapReady(GoogleMap googleMap) {
                         map = googleMap;
                         setMarkers();
-                        // moveCamera();
+                        moveCamera();
                     }
                 });
     }
@@ -41,9 +41,9 @@ public class SimpleMapActivity extends Activity  {
     private void setMarkers() {
         map.addMarker(new MarkerOptions()
                 .position(AUSTIN)
-                .title("Austin")
-                .icon(BitmapDescriptorFactory
-                        .fromResource(R.drawable.longhorn)));
+                .title("Austin"));
+//                .icon(BitmapDescriptorFactory
+//                        .fromResource(R.drawable.longhorn)));
 
         map.addMarker(new MarkerOptions()
                 .position(ARLINGTON)
