@@ -11,6 +11,7 @@
     <color name="green">#00FF00</color>
     <color name="yellow">#FFFF00</color>
     <color name="board">#855E42</color>
+    <color name="current_row">#D2BFAD</color>
     <color name="gridline">#D5AE92</color>
     <color name="empty_feedback">#CDCDCD</color>
     <color name="empty_peg_outer">#6B6B6B</color>

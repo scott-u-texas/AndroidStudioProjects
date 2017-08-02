@@ -38,7 +38,7 @@ public class GuessFourGame extends Activity {
 	private HashMap<Peg, Integer> pegColors;		
 	private int numColors;
 	private Button[] colorButtons;
-	private Board gameBoard;
+	protected Board gameBoard;
 	private BoardView boardView;
 	private boolean active;
 	
@@ -59,6 +59,7 @@ public class GuessFourGame extends Activity {
 	    
 	    // if this activity is restarted need to know to continue!
 	    getIntent().putExtra(KEY_DIFFICULTY, DIFFICULTY_CONTINUE_GAME);
+		boardView = (BoardView) findViewById(R.id.boardview);
 	}
 	
 	private void createBoard(int difficulty) {
@@ -69,8 +70,7 @@ public class GuessFourGame extends Activity {
 			String oldCodes = getPreferences(MODE_PRIVATE).getString(PREF_GAME, "");
 			Log.d(TAG, "In createBoard. old board: " + oldCodes);
 			rebuildBoard(oldCodes);
-		}
-		else {
+		} else {
 			active = true;
 			int codeSize = pegsAndColors[0][difficulty];
 			numColors = pegsAndColors[1][difficulty];
@@ -126,14 +126,10 @@ public class GuessFourGame extends Activity {
 		// remind to start new game!!!!!
 	}
 	
-	public void setBoardView(BoardView bv) {
-		boardView = bv;
-	}
-	
 	private void setNextPeg(Peg p) {
-		if(gameBoard.currentGuessFull()) 
-			showError(R.string.code_full_message);
-		else {
+		if(gameBoard.currentGuessFull()) {
+            showError(R.string.code_full_message);
+        } else {
 			gameBoard.addPeg(p);
 			Sounds.play(this, R.raw.bing2);
 		}
@@ -146,7 +142,7 @@ public class GuessFourGame extends Activity {
 			Log.e(TAG, "colors array in xml file and number of pegs do not match");
 		int numPairs = Math.min(colors.length, pegs.length);
 		pegColors = new HashMap<Peg, Integer>();
-		for(int i = 0; i < numPairs; i++) {
+		for (int i = 0; i < numPairs; i++) {
 			pegColors.put(pegs[i], colors[i]);
 		}
 	}
@@ -178,12 +174,12 @@ public class GuessFourGame extends Activity {
 
 
     public void clearPeg(View v) {
-        if(active)
+        if (active)
             clearPeg();
     }
 
     public void makeGuess(View v) {
-        if(active)
+        if (active)
             makeGuess();
     }
 
@@ -218,20 +214,18 @@ public class GuessFourGame extends Activity {
 	}
 
 	private void makeGuess() {
-		if(!gameBoard.currentGuessFull())
+		if (!gameBoard.currentGuessFull())
 			showError(R.string.code_not_full_error);
 		else {
 			gameBoard.addGuess();
-			if(gameBoard.solved()) {
+			if (gameBoard.solved()) {
 				active = false;
 				gameOver(R.string.win);
 				Sounds.play(this, R.raw.f);
-			}
-			else if(gameBoard.guessesSoFar() == gameBoard.maxAllowedGuesses()) {
+			} else if(gameBoard.guessesSoFar() == gameBoard.maxAllowedGuesses()) {
 				active = false;
 				gameOver(R.string.lost);
-			}
-			else
+			} else
 				Sounds.play(this, R.raw.bing);
 			boardView.invalidate();
 		}	
