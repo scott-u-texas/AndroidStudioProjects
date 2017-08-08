@@ -161,7 +161,7 @@ public class BoardView extends View {
 
     private void updateHighlightRectLocations() {
         final float LEFT = 0;
-        final float RIGHT = getWidth();
+        final float RIGHT = guessWidth;
         float y = rowHeight;
         for (RectF r : highlightRects) {
             r.left = LEFT;

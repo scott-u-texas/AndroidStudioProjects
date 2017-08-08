@@ -17,6 +17,8 @@ import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.TreeMap;
+
 public class ResponserService extends Service {
 
 	private static final String TAG = "SMS-Response-Service";
@@ -37,13 +39,16 @@ public class ResponserService extends Service {
 
 	private String requester;
     private SharedPreferences myprefs;
+	// Track the numbers we have responded to and the number of
+	// times each number texted.
+	private TreeMap<String, Integer> incomingNumbers;
 
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		Log.d(TAG, "In onCreate for ResponserService class");
         myprefs = PreferenceManager.getDefaultSharedPreferences(this);
-        
+        incomingNumbers = new TreeMap<>();
         // sentReceiver informed when message from our app sent
 	    registerReceiver(sentReceiver, new IntentFilter(SENT_ACTION));
 	    
@@ -124,6 +129,9 @@ public class ResponserService extends Service {
     
     public void requestReceived(String f) {
     	Log.v(TAG,"In requestReceived. value of f: " + f);
+        Integer numCalls = incomingNumbers.get(f);
+        numCalls = (numCalls == null) ? 1 : numCalls + 1;
+        incomingNumbers.put(f, numCalls);
     	requester = f;
     }
 
@@ -148,7 +156,9 @@ public class ResponserService extends Service {
     				for(SmsMessage message: messages) {
     					requestReceived(message.getOriginatingAddress());
     				}
-    				respond();
+    				if (incomingNumbers.get(requester) < 2) {
+                        respond();
+                    }
     			}
     		}
 
@@ -194,8 +204,6 @@ public class ResponserService extends Service {
 		Log.d(TAG, "in onDestroy");
 		unregisterReceiver(receiver);
 		unregisterReceiver(sentReceiver);
-
-
 		// unregisterReceiver(deliverReceiver);
         // unregisterReceiver(sender);
 	}
