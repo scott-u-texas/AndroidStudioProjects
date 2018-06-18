@@ -15,9 +15,11 @@
         <item>Bournemouth</item>
         <item>Brighton and Hove Albion</item>
         <item>Burnley</item>
+        <item>Cardiff City</item>
         <item>Chelsea</item>
         <item>Crystal Palace</item>
         <item>Everton</item>
+        <item>Fulham</item>
         <item>Huddersfield Town</item>
         <item>Leicester City</item>
         <item>Liverpool</item>
@@ -25,12 +27,10 @@
         <item>Manchester United</item>
         <item>Newcastle United</item>
         <item>Southampton</item>
-        <item>Stoke City</item>
-        <item>Swansea</item>
         <item>Tottenham Hotspur</item>
         <item>Watford</item>
-        <item>West Bromwich Albion</item>
         <item>West Ham United</item>
+        <item>Wolverhampton Wanderers</item>
     </string-array>
 
 </resources>

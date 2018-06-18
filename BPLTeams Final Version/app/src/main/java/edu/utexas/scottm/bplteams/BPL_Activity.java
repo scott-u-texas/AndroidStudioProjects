@@ -26,7 +26,7 @@ public class BPL_Activity extends Activity {
     private String bestTeam = "Chelsea";
     private ImageView teamCrestImageView;
     private Spinner teamPickerSpinner;
-
+    private Button bestTeamButtom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +34,7 @@ public class BPL_Activity extends Activity {
         getImageIDs();
         teamCrestImageView = (ImageView) findViewById(R.id.imageView);
         teamPickerSpinner = (Spinner) findViewById(R.id.football_club_spinner);
+        bestTeamButtom = (Button) findViewById(R.id.best_button);
         setSpinnerListener();
         // setRandomButtonListener(); // comment out if onClick attribute set in XML
         // setBestButton();
@@ -41,7 +42,7 @@ public class BPL_Activity extends Activity {
 
     public void showBest(View v) {
         bestTeam += "!";
-        ((Button)v).setText(bestTeam);
+        ((Button) v).setText(bestTeam);
         teamCrestImageView.setImageResource(R.drawable.chelsea);
     }
 
@@ -88,6 +89,7 @@ public class BPL_Activity extends Activity {
         Log.d(TAG, "new index  = " + newIndex);
         teamCrestImageView.setImageResource(imageIDs.get(newIndex));
         teamPickerSpinner.setSelection(newIndex);
+        bestTeamButtom.setText(R.string.best_team);
     }
 
     private void setRandomButtonListener() {

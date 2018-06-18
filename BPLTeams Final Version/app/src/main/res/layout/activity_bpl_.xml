@@ -38,19 +38,18 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:onClick="pickRandom"
-
         android:text="@string/random_button"
         android:textSize="32sp" />
 
     <!--android:onClick="pickRandom"-->
 
     <Button
-        android:text="@string/best_team"
+        android:id="@+id/best_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/best"
-        android:textSize="32sp"
-        android:onClick="showBest"/>
+        android:onClick="showBest"
+        android:text="@string/best_team"
+        android:textSize="32sp" />
 
 </LinearLayout>
