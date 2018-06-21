@@ -104,6 +104,7 @@ public class IntentExample extends Activity
 
     }
 
+    // Took a picture with Camera app.
     private void handlePicture(int resultCode) {
         ImageView img = (ImageView) this.findViewById(R.id.imageView1);
         if (resultCode == RESULT_OK && filePermission) {
@@ -139,6 +140,18 @@ public class IntentExample extends Activity
 //			Log.d(TAG, "file exists: " + file);
 //		else
 //			Log.d(TAG, "file does not exist: " + file);
+    }
+
+    // Got name back from other Activity.
+    private void showName(int resultCode, Intent intent) {
+        if (intent != null && intent.hasExtra(NAME_DATA)) {
+            String name = intent.getStringExtra(NAME_DATA);
+            Log.d(TAG, "name is " + name);
+            if (resultCode == RESULT_OK) {
+                Toast.makeText(this, intent.getStringExtra(NAME_DATA)
+                        + " just typed in their name!", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     private void requestFilePermission() {
@@ -180,15 +193,6 @@ public class IntentExample extends Activity
                                 && (grantResults[0]
                                 == PackageManager.PERMISSION_GRANTED);
             }
-        }
-    }
-
-    private void showName(int resultCode, Intent intent) {
-        String name = intent.getStringExtra(NAME_DATA);
-        Log.d(TAG, "name is " + name);
-        if (resultCode == RESULT_OK) {
-            Toast.makeText(this, intent.getStringExtra(NAME_DATA)
-                    + " just typed in their name!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -241,6 +245,5 @@ public class IntentExample extends Activity
                 new String[]{
                         Manifest.permission.READ_EXTERNAL_STORAGE},
                 MY_PERMISSIONS_REQUEST_READ_FILES);
-
     }
 }

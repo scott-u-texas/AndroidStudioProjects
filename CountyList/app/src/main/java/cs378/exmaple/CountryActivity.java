@@ -32,7 +32,7 @@ public class CountryActivity extends ListActivity {
 
     //** *** For Simple Version *** */
     // Uncomment for examples 1 and 2
-    // @Override
+//      @Override
 //    public void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
 //        createModel();
@@ -48,7 +48,7 @@ public class CountryActivity extends ListActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         List<CountryRowData> list
-                = new ArrayList<CountryRowData>();
+                = new ArrayList<>();
         String[] countries
                 = getResources().getStringArray(R.array.countries);
         for (String s : countries) {
@@ -63,7 +63,7 @@ public class CountryActivity extends ListActivity {
 //        adapter
 //                = new ArrayAdapter<String>(
 //                this,               // context
-//                R.layout.list_item, // android.R.layout.simple_list_item_1,
+//                R.layout.list_item, // or android.R.layout.simple_list_item_1,
 //                countries);         // model
 
 
