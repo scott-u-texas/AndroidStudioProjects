@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Android TicTacToe</string>
+    <string name="human_first">You go first.</string>
+    <string name="human_turn">Your turn.</string>
+    <string name="computer_turn">Android\'s turn.</string>
+    <string name="result_tie">It\'s a tie.</string>
+    <string name="result_human_wins">You won!</string>
+    <string name="result_computer_wins">Android won!</string>
+    <string name="human">Human:  </string>
+    <string name="zero">0</string>
+    <string name="ties">Ties:  </string>
+    <string name="android">Android:  </string>
+    <string name="info">info</string>
+    <string name="quit_question">Are you sure you want to quit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="difficulty_choose">Choose a Difficulty Level</string>
+    <string name="ok">OK</string>s
+    <string name="cancel">Cancel</string>s
+    <string name="about_text">Tic Tac Toe Against Android.\n\nDifficulty Levels are:\n\nEasy: Android Picks Random move\nHarder: Winning move if available, otherwise random.\nExpert: Winning move if available, block Human winning move, otherwise random.</string>
+    <string name="new_game">New Game</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="quit">Quit</string>
+    <string name="about">About game</string>
+    <string-array name="difficulty_levels">
+        <item>Easy</item>
+        <item>Harder</item>
+        <item>Expert</item>
+    </string-array>
+
+
+</resources>
