@@ -37,7 +37,7 @@ public class IntentExample extends Activity
     private String extension;
     private int imageNumber;
     private String pictureLocation;
-    private boolean filePermission;
+    private ImageView img;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,8 +47,7 @@ public class IntentExample extends Activity
         fileName = Environment.getExternalStorageDirectory() + "/intentExamplePhotos/test";
         extension = ".jpg";
         imageNumber = readImageNumber();
-        Log.d(TAG, "In onCreate. file permission: " + filePermission);
-
+        img = this.findViewById(R.id.imageView1);
     }
 
     @Override
@@ -60,17 +59,13 @@ public class IntentExample extends Activity
     @Override
     public void onResume() {
         super.onResume();
-        filePermission
-                = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+        Log.d(TAG, "In onResume. file permission: " + storagePermissionGranted());
+    }
+
+    private boolean storagePermissionGranted() {
+        return ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED;
-        Log.d(TAG, "In onResume. file permission: " + filePermission);
-
-        if (!filePermission) {
-            Log.d(TAG, "In onResume. Calling request file permission. ");
-            requestFilePermission();
-        }
-        Log.d(TAG, "In onResume. file permission: " + filePermission);
-
     }
 
     private int readImageNumber() {
@@ -106,33 +101,21 @@ public class IntentExample extends Activity
 
     // Took a picture with Camera app.
     private void handlePicture(int resultCode) {
-        ImageView img = (ImageView) this.findViewById(R.id.imageView1);
-        if (resultCode == RESULT_OK && filePermission) {
-            // change picture in ImageView to image just taken
+        if (resultCode == RESULT_OK) {
+            if (!storagePermissionGranted()) {
+                requestFilePermission();
+            }
+            if (storagePermissionGranted()) {
+                Log.d(TAG, "in handle picture. " +
+                        "Storage permission is granted, calling" +
+                        "displayFromFile");
+                displayFromFile();
 
-            // reduce size of image
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inSampleSize = 4;
-            Bitmap bmp = BitmapFactory.decodeFile(pictureLocation, options);
-            img.setImageBitmap(bmp);
-
-            Toast.makeText(this, "Photo saved to: "
-                    + outputFileUri.toString(), Toast.LENGTH_LONG).show();
-
-            Log.d(TAG, "Photo saved to: " + outputFileUri.toString());
-
-            // increment the picture number, so next picture saved as different file
-            imageNumber++;
+            } else {
+                displayDefault();
+            }
         } else if (resultCode == RESULT_CANCELED) {
-            Bitmap onPictureImage
-                    = BitmapFactory.decodeResource(getResources(),
-                    R.drawable.no_picture);
-            img.setImageBitmap(onPictureImage);
-        } else if (!filePermission) {
-            Bitmap onPictureImage
-                    = BitmapFactory.decodeResource(getResources(),
-                    R.drawable.no_permission);
-            img.setImageBitmap(onPictureImage);
+            displayDefault();
         }
 
         //		File file = new File(fileName);
@@ -140,6 +123,28 @@ public class IntentExample extends Activity
 //			Log.d(TAG, "file exists: " + file);
 //		else
 //			Log.d(TAG, "file does not exist: " + file);
+    }
+
+    private void displayFromFile() {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = 4;
+        Bitmap bmp = BitmapFactory.decodeFile(pictureLocation, options);
+        img.setImageBitmap(bmp);
+
+        Toast.makeText(this, "Photo saved to: "
+                + outputFileUri.toString(), Toast.LENGTH_LONG).show();
+
+        Log.d(TAG, "Photo saved to: " + outputFileUri.toString());
+
+        // increment the picture number, so next picture saved as different file
+        imageNumber++;
+    }
+
+    private void displayDefault() {
+        Bitmap onPictureImage
+                = BitmapFactory.decodeResource(getResources(),
+                R.drawable.no_picture);
+        img.setImageBitmap(onPictureImage);
     }
 
     // Got name back from other Activity.
@@ -188,10 +193,14 @@ public class IntentExample extends Activity
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_READ_FILES: {
                 // If request is cancelled, the result arrays are empty.
-                filePermission =
-                        (grantResults.length > 0)
+                if ((grantResults.length > 0)
                                 && (grantResults[0]
-                                == PackageManager.PERMISSION_GRANTED);
+                                == PackageManager.PERMISSION_GRANTED)) {
+                    Log.d(TAG, "in onRequestPermissionsResult " +
+                            "and permission was granted. " +
+                            "Calling display from file. ");
+                    displayFromFile();
+                }
             }
         }
     }
